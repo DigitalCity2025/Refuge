@@ -1,6 +1,3 @@
-@Refuge.API_HostAddress = http://localhost:5015
+@base_url = http://localhost:5015
 
-GET {{Refuge.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
+GET {{base_url}}/cat?letter=f

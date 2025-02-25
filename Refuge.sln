@@ -5,6 +5,10 @@ VisualStudioVersion = 17.12.35527.113 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refuge.API", "Refuge.API\Refuge.API.csproj", "{AE714BBC-9ECE-43C3-B1EE-85C591CBE250}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refuge.Application", "Refuge.Application\Refuge.Application.csproj", "{9DD41968-6460-4724-B20A-F309464856C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refuge.DAL", "Refuge.DAL\Refuge.DAL.csproj", "{9959B1D8-1253-4AD7-9AB6-C2F71380CC4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AE714BBC-9ECE-43C3-B1EE-85C591CBE250}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE714BBC-9ECE-43C3-B1EE-85C591CBE250}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE714BBC-9ECE-43C3-B1EE-85C591CBE250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DD41968-6460-4724-B20A-F309464856C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD41968-6460-4724-B20A-F309464856C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD41968-6460-4724-B20A-F309464856C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD41968-6460-4724-B20A-F309464856C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9959B1D8-1253-4AD7-9AB6-C2F71380CC4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9959B1D8-1253-4AD7-9AB6-C2F71380CC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9959B1D8-1253-4AD7-9AB6-C2F71380CC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9959B1D8-1253-4AD7-9AB6-C2F71380CC4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

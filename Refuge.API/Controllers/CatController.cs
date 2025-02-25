@@ -7,13 +7,13 @@ namespace Refuge.API.Controllers
     [Route("Cat")]
     public class CatController: ControllerBase
     {
-        static List<string> l 
+        static List<string> dbChat 
             =  [ "Miaouss", "Felix", "Garfield", "Duchesse" ];
 
         [HttpGet]
         public IActionResult Get([FromQuery]char letter)
         {
-            return Ok(l.Where(c => c.Contains(letter)));
+            return Ok(dbChat.Where(c => c.Contains(letter)));
         }
 
         [HttpGet("{id}")]
@@ -21,7 +21,7 @@ namespace Refuge.API.Controllers
         {
             try
             {
-                return Ok(l[id]);
+                return Ok(dbChat[id]);
             }
             catch (Exception)
             {
@@ -34,12 +34,12 @@ namespace Refuge.API.Controllers
             [FromBody][MaxLength(25)]string nom
         )
         {
-            if(l.Contains(nom))
+            if(dbChat.Contains(nom))
             {
                 ModelState.AddModelError("nom", "the name must be unique");
                 return BadRequest(ModelState);
             }
-            l.Add(nom);
+            dbChat.Add(nom);
             return Created();
         }
 
@@ -51,7 +51,7 @@ namespace Refuge.API.Controllers
         {
             try
             {
-                l[id] = nom;
+                dbChat[id] = nom;
                 return NoContent();
             }
             catch (Exception)
@@ -65,9 +65,9 @@ namespace Refuge.API.Controllers
         {
             try
             {
-                if (l[id] != null)
+                if (dbChat[id] != null)
                 {
-                    l.RemoveAt(id);
+                    dbChat.RemoveAt(id);
                 }
                 return NoContent();
             }
