@@ -1,45 +1,35 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Refuge.API.DTO;
+using Refuge.Application.Abstractions.Services;
+using Refuge.Application.Entities;
+using Refuge.Application.Enums;
+using Refuge.DAL.Repositories;
 using System.ComponentModel.DataAnnotations;
 
 namespace Refuge.API.Controllers
 {
     [ApiController]
     [Route("Cat")]
-    public class CatController: ControllerBase
+    public class CatController(ICatService catService): ControllerBase
     {
-        static List<string> dbChat 
-            =  [ "Miaouss", "Felix", "Garfield", "Duchesse" ];
-
         [HttpGet]
-        public IActionResult Get([FromQuery]char letter)
+        public IActionResult Get([FromQuery]char letter, [FromQuery]CatColor color)
         {
-            return Ok(dbChat.Where(c => c.Contains(letter)));
+            return Ok(catService.SearchByLetterAndColor(letter, color));
         }
 
         [HttpGet("{id}")]
         public IActionResult Get([FromRoute]int id) 
         {
-            try
-            {
-                return Ok(dbChat[id]);
-            }
-            catch (Exception)
-            {
-                return NotFound();
-            }
+            return Ok();
         }
 
         [HttpPost]
-        public IActionResult Post(
-            [FromBody][MaxLength(25)]string nom
-        )
+        public IActionResult Post([FromBody]CatFormDTO dto)
         {
-            if(dbChat.Contains(nom))
-            {
-                ModelState.AddModelError("nom", "the name must be unique");
-                return BadRequest(ModelState);
-            }
-            dbChat.Add(nom);
+            catService.Add(
+                new Cat { Name = dto.Name, Color = dto.Color }
+            );
             return Created();
         }
 
@@ -49,32 +39,13 @@ namespace Refuge.API.Controllers
             [FromBody][MaxLength(25)] string nom
         )
         {
-            try
-            {
-                dbChat[id] = nom;
-                return NoContent();
-            }
-            catch (Exception)
-            {
-                return NotFound();
-            }
+            return Ok();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] int id)
         {
-            try
-            {
-                if (dbChat[id] != null)
-                {
-                    dbChat.RemoveAt(id);
-                }
-                return NoContent();
-            }
-            catch (Exception)
-            {
-                return NotFound();
-            }
+            return Ok();
         }
     }
 }
